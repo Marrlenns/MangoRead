@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  mysql:
+    build: .
+    ports:
+      - "3306:3306"
+
+  app:
+    image: python:3.10
+    volumes:
+      - ../:/MangoRead
+    container_name: django_container
+    command: bash -c "cd ./MangoRead && pip install -r requirements.txt &&
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
