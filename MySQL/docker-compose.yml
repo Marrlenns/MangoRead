@@ -10,7 +10,7 @@ services:
     volumes:
       - ../:/MangoRead
     container_name: django_container
-    command: bash -c "cd ./MangoRead && pip install -r requirements.txt &&
+    command: bash -c "cd ./MangoRead && pip install -r req.txt &&
               python manage.py migrate &&
               python manage.py runserver 0.0.0.0:8000"
     ports:
